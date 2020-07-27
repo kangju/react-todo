@@ -1,0 +1,15 @@
+body{
+    touch-action: manipulation;
+}
+
+ol {
+    list-style: disc;
+}
+
+button {
+    padding: 2px;
+}
+
+input[type=text]{
+    font-size: 16px;
+}
