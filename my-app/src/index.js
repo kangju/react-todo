@@ -10,9 +10,6 @@ class Todo extends React.Component
             todos:[],
             inputtext:"",
         }
-
-//        this.onAddButtonClick = this.onAddButtonClick.bind(this);
-//        this.onInputFieldChange = this.onInputFieldChange.bind(this);
     }
 
     onInputFieldChange(e){
