@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+const API_KEY = "TODO";
 
 function TodoItem(props){
     return (
@@ -37,8 +38,12 @@ class Todo extends React.Component
 {
     constructor(props){
         super(props);
+
+        const localItem = localStorage.getItem(API_KEY);
+        const todos = localItem ? JSON.parse(localItem) : [];
+
         this.state = {
-            todos:[],
+            todos:todos,
             inputtext:"",
         }
     }
@@ -63,10 +68,15 @@ class Todo extends React.Component
         if(!inputtext)
             return;
 
+        const newTodos = this.state.todos.concat(inputtext);
         this.setState({
-            todos:this.state.todos.concat(inputtext),
+            todos:newTodos,
             inputtext:"",
         });
+
+        localStorage.setItem(API_KEY,JSON.stringify(newTodos));
+
+        
     }
 
     onRemoveButtonClick(index)
@@ -76,6 +86,7 @@ class Todo extends React.Component
         this.setState({
             todos:todos
         });
+        localStorage.setItem(API_KEY,JSON.stringify(todos));
     }
 
     render(){
